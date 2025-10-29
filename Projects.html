@@ -9,6 +9,12 @@
 
 
   <link rel="shortcut icon" type="image/x-icon" href="img\favicon.png">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#03045e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rahini Portfolio">
+  <link rel="manifest" href="manifest.json">
   <!-- Stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700|Poppins:100,200,300,400,500,600,700"
     rel="stylesheet">
@@ -16,7 +22,117 @@
   <link rel="stylesheet" href="assets/css-1\style.css">
   <link type="text/css" rel="stylesheet" href="dezvolta1c.css">
   <style>
-
+    /* Projects page - light UI upgrades */
+    .screen__view__slider .screen__item a img {
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      transform: translateZ(0);
+      transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+      filter: saturate(0.9) contrast(1.02);
+      width: 100%;
+      height: auto;
+    }
+    .screen__view__slider .screen__item a:hover img {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(0,0,0,.20);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .blog-entry {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 22px rgba(0,0,0,.08);
+      padding: 22px 18px;
+      margin-bottom: 30px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .blog-entry:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(0,0,0,.12);
+    }
+    .blog-entry .entry--meta {
+      display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #03045e;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 8px;
+    }
+    .blog-entry .entry--title h4 {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #222;
+      margin: 10px 0 16px;
+    }
+    .blog-entry a {
+      color: #03045e;
+      text-decoration: none;
+      display: inline-block;
+      background: rgba(3, 4, 94, 0.08);
+      border: 1px solid rgba(3, 4, 94, 0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin: 4px 6px 4px 0;
+      line-height: 1.2;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .blog-entry a:hover {
+      background: rgba(3, 4, 94, 0.12);
+      border-color: rgba(3, 4, 94, 0.25);
+      transform: translateY(-2px);
+    }
+    .breadcrumbs h5 {
+      margin: 16px 0 0;
+      font-weight: 500;
+      letter-spacing: .2px;
+      opacity: .95;
+    }
+    .mt-40 { margin-top: 40px; }
+    .mb-20 { margin-bottom: 20px; }
+    .mb-10 { margin-bottom: 10px; }
+    #project-details .blog-entry ul li { margin: 4px 0; }
+    /* Project details - accordion style */
+    #project-details .pd-accordion details {
+      background: #fff;
+      border: 1px solid rgba(3, 4, 94, 0.18);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 0 0 12px 0;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    #project-details .pd-accordion details[open] {
+      box-shadow: 0 10px 28px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+    }
+    #project-details .pd-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #project-details .pd-accordion summary::-webkit-details-marker { display: none; }
+    #project-details .pd-accordion .chev {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(3, 4, 94, 0.12);
+      color: #03045e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: transform .2s ease;
+    }
+    #project-details .pd-accordion details[open] .chev { transform: rotate(90deg); }
+    #project-details .pd-accordion .content { margin: 10px 2px 2px 28px; color: #444; }
+    #project-details .pd-accordion .content ul { margin: 6px 0 6px 16px; }
   </style>
   <header data-nav="home" id="home" class="main-header">
 
@@ -34,7 +150,7 @@
     <div class="breadcrumbs">
       <div class="container">
         <ul class="breadcrumbs all-white">
-          <h3>My Creative Designs</h3>
+          <h5>Convert design mockups and wireframes into responsive, production-ready user interfaces.</h5>
         </ul>
       </div>
     </div>
@@ -63,42 +179,44 @@
           <div class="pt-120 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
             <div class="screen__view__slider owl-carousel">
               <div class="screen__item">
-                <a href="https://dollyhomes.com/" target="_blank"><img src="assets/img-1/projects/dollyhomes.jpg"></a>
+                <a href="https://dollyhomes.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/dollyhomes.jpg" alt="Dolly Homes website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="http://www.bsrbuilders.com/" target="_blank"><img src="assets/img-1\projects\bsr.jpg"></a>
+                <a href="http://www.bsrbuilders.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/bsr.jpg" alt="BSR Builders website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://www.appointos.com/" target="_blank"><img src="assets/img-1\projects\4.jpg"></a>
+                <a href="https://www.appointos.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/4.jpg" alt="Appointos website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://qa-business.appointos.com/" target="_blank"><img src="assets/img-1\projects\5.jpg"></a>
+                <a href="https://qa-business.appointos.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/5.jpg" alt="Appointos Business app screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://metrograndcity.com/" target="_blank"><img src="assets/img-1\projects\metro.jpg"></a>
+                <a href="https://metrograndcity.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/metro.jpg" alt="Metro Grand City website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://qa-personal.appointos.com/" target="_blank"><img src="assets/img-1\projects\3.jpg"></a>
+                <a href="https://qa-personal.appointos.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/3.jpg" alt="Appointos Personal app screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="http://chennaimetrocoophousing.com/" target="_blank"><img src="assets/img-1\projects\society.jpg"></a>
+                <a href="http://chennaimetrocoophousing.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/society.jpg" alt="Chennai Metro Cooperative Housing website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="http://vanavilestate.com/" target="_blank"><img src="assets/img-1\projects\vanavil-enterprise.jpg"></a>
+                <a href="http://vanavilestate.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/vanavil-enterprise.jpg" alt="Vanavil Enterprise website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="http://ezreturnsinc.com/" target="_blank"><img src="assets/img-1\projects\1.jpg"></a>
+                <a href="http://ezreturnsinc.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/1.jpg" alt="EZReturns website screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://apps.apple.com/us/app/id1574661878" target="_blank"><img src="assets/img-1\projects\2.jpeg"></a>
+                <a href="https://apps.apple.com/us/app/id1574661878" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/2.jpeg" alt="App Store listing screenshot" loading="lazy"></a>
               </div>
               <div class="screen__item">
-                <a href="https://qa-customer.ezreturnsinc.com/" target="_blank"><img src="assets/img-1\projects\7.jpeg"></a>
+                <a href="https://qa-customer.ezreturnsinc.com/" target="_blank" rel="noopener noreferrer"><img src="assets/img-1/projects/7.jpeg" alt="EZReturns Customer app screenshot" loading="lazy"></a>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <!-- Project Details Section -->
+   
       <section>
         <div class="col-xs-12 col-sm-12 col-md-12 mt-30">
           <div class="row">
@@ -114,49 +232,49 @@
                   <h4>Information about your site and encourages people to visit your site.</h4>
                 </div>
                 <div>
-                  <a href="https://www.appointos.com/" target="_blank">appointos.com</a>
+                  <a href="https://ce.cebos.io/" target="_blank" rel="noopener noreferrer">ce.cebos.io</a>
                 </div>
                 <div>
-                  <a href="https://www.ezreturnsinc.com/" target="_blank">ezreturnsinc.com</a>
+                  <a href="https://www.ezreturnsinc.com/" target="_blank" rel="noopener noreferrer">ezreturnsinc.com</a>
                 </div>
                 <div>
-                  <a href="https://www.appkorp.com/" target="_blank">appkorp.com</a>
+                  <a href="https://www.hi5rentals.com/" target="_blank" rel="noopener noreferrer">hi5rentals.com</a>
                 </div>
                 <div>
-                  <a href="http://www.bsrbuilders.com/" target="_blank">bsrbuilders.com</a>
+                  <a href="https://www.appkorp.com/" target="_blank" rel="noopener noreferrer">appkorp.com</a>
                 </div>
                 <div>
-                  <a href="http://jhlglobal.co.in/" target="_blank">jhlglobal.co.in</a>
+                  <a href="http://www.bsrbuilders.com/" target="_blank" rel="noopener noreferrer">bsrbuilders.com</a>
                 </div>
                 <div>
-                  <a href="http://chennaimetrocoophousing.com/" target="_blank">chennaimetrocoophousing.com</a>
+                  <a href="http://jhlglobal.co.in/" target="_blank" rel="noopener noreferrer">jhlglobal.co.in</a>
                 </div>
                 <div>
-                  <a href="http://vanavilestate.com/" target="_blank">vanavilestate.com</a>
+                  <a href="http://chennaimetrocoophousing.com/" target="_blank" rel="noopener noreferrer">chennaimetrocoophousing.com</a>
                 </div>
                 <div>
-                  <a href="https://www.vikaahomes.com/" target="_blank">vikaahomes.com</a>
+                  <a href="http://vanavilestate.com/" target="_blank" rel="noopener noreferrer">vanavilestate.com</a>
                 </div>
                 <div>
-                  <a href="https://dollyhomes.com/" target="_blank">dollyhomes.com</a>
+                  <a href="https://www.vikaahomes.com/" target="_blank" rel="noopener noreferrer">vikaahomes.com</a>
                 </div>
                 <div>
-                  <a href="https://doodleid.com/" target="_blank">doodleid.com</a>
+                  <a href="https://dollyhomes.com/" target="_blank" rel="noopener noreferrer">dollyhomes.com</a>
                 </div>
                 <div>
-                  <a href="https://metrograndcity.com/" target="_blank">metrograndcity.com</a>
+                  <a href="https://doodleid.com/" target="_blank" rel="noopener noreferrer">doodleid.com</a>
                 </div>
                 <div>
-                  <a href="http://inspiredesign.in/" target="_blank">inspiredesign.com</a>
+                  <a href="https://metrograndcity.com/" target="_blank" rel="noopener noreferrer">metrograndcity.com</a>
                 </div>
                 <div>
-                  <a href="http://www.folksinteriors.com/" target="_blank">folksinteriors.com</a>
+                  <a href="http://inspiredesign.in/" target="_blank" rel="noopener noreferrer">inspiredesign.com</a>
                 </div>
                 <div>
-                  <a href="https://alayamconstructions.com/" target="_blank">alayamconstructions.com</a>
+                  <a href="http://www.folksinteriors.com/" target="_blank" rel="noopener noreferrer">folksinteriors.com</a>
                 </div>
                 <div>
-                  <a href="http://www.eliteestate.co.in/" target="_blank">eliteestate.co.in</a>
+                  <a href="http://www.eliteestate.co.in/" target="_blank" rel="noopener noreferrer">eliteestate.co.in</a>
                 </div>
               </div>
               <!-- .blog-entry end -->
@@ -172,13 +290,13 @@
                   <h4>A application software are accessed by the user through a web browser</h4>
                 </div>
                 <div>
-                  <a href="https://qa-business.appointos.com/" target="_blank">business.appointos.com</a>
+                  <a href="https://qa-business.appointos.com/" target="_blank" rel="noopener noreferrer">business.appointos.com</a>
                 </div>
                 <div>
-                  <a href="https://qa-customer.ezreturnsinc.com/" target="_blank">customer.ezreturnsinc.com</a>
+                  <a href="https://qa-customer.ezreturnsinc.com/" target="_blank" rel="noopener noreferrer">customer.ezreturnsinc.com</a>
                 </div>
                 <div>
-                  <a href="https://qa-my.appointos.com/" target="_blank">personal.appointos.com</a>
+                  <a href="https://qa-my.appointos.com/" target="_blank" rel="noopener noreferrer">personal.appointos.com</a>
                 </div>
 
               </div>
@@ -236,90 +354,108 @@
           <!-- .row end -->
         </div>
       </section>
+      <section id="project-details" class="mt-40">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="pd-accordion" align="left">
+                <div class="entry--meta">Project Details</div>
+                <div class="entry--title">
+                  <h4>Highlights of selected web and mobile applications</h4>
+                </div>
+
+                <details>
+                  <summary><span class="chev">›</span> Cebos – Business & Customer</summary>
+                  <div class="content">
+                    <p>A suite of applications for businesses and customers that streamlines everyday operations and engagement.</p>
+                    <div style="font-weight:600;margin:6px 0 6px;">Key Features</div>
+                    <ul>
+                      <li>Rewards</li>
+                      <li>Customer Feedback & Surveys</li>
+                      <li>Payment Processing</li>
+                      <li>Event Management</li>
+                      <li>Appointment Scheduling</li>
+                    </ul>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> GreatX</summary>
+                  <div class="content">
+                    <p>GreatX lets users invest in real estate using crypto tokens. Explore properties, assign tokens to rooms, track real‑time earnings, and manage investments. Users fund their wallet, earn quarterly and annual returns, and withdraw after the lock‑in period.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Ezreturns</summary>
+                  <div class="content">
+                    <p>Customers initiate returns in the client app; drivers accept and surrender items to the nearest carrier; admins monitor end‑to‑end. Designed to make returning products simple and seamless.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Hi5Rentals</summary>
+                  <div class="content">
+                    <p>A web application delivering reliable, high‑quality rental solutions with exceptional customer service.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Imoni</summary>
+                  <div class="content">
+                    <p>Game‑changing fee collection with a user‑friendly interface and flexible subscriptions—making collections effortless with a single click.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Robee</summary>
+                  <div class="content">
+                    <p>Streamlines trading and optimizes strategies, offering insights and intuitive tools for effective account management.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Upword</summary>
+                  <div class="content">
+                    <p>A decentralized social media application built on the Ethereum blockchain.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary><span class="chev">›</span> Lotus</summary>
+                  <div class="content">
+                    <p>A decentralized ecosystem combining innovation, accessibility, and sustainability—empowering individuals and businesses to build a fairer digital future.</p>
+                  </div>
+                </details>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
   </div>
-  <!-- <div class=" container-fluid" style="margin-top:20px;">
-         <div class="row color-black">
-           <div class="col-lg-10 offset-lg-1 col-12">
-             <div class="card" style="padding:20px;">
-               <div
-                 style="background:#9d63d54f;margin: -22px;margin-bottom: 10px;padding: 15px;text-align: center;color: #fff;font-size: 23px;color: black;border-radius: 10px 10px 0px 0px;font-weight: 500;">
-                 <div class="col-12">
-                   <div class="search-title-book">
-                     Websites and web applications and mobile applications </div>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="col-4">
-                   <div class="box-border">
-                     <div class="center-align flex mt-10 text-center">
-                       <div class="ml-20 bold text-center" style="margin-top:20px;text-transform: uppercase;">Websites</div>
-                       <div>
-                         <a href="https://www.appointos.com/" target="_blank">appointos.com</a>
-                       </div>
-                       <div>
-                         <a href="https://www.ezreturnsinc.com/" target="_blank">ezreturnsinc.com</a>
-                       </div>
-                       <div>
-                         <a href="https://www.appkorp.com/" target="_blank">appkorp.com</a>
-                       </div>
-                       <div>
-                         <a href="http://www.bsrbuilders.com/" target="_blank">bsrbuilders.com</a>
-                       </div>
-                       <div>
-                         <a href="http://jhlglobal.co.in/" target="_blank">jhlglobal.co.in</a>
-                       </div>
-                       <div>
-                         <a href="http://chennaimetrocoophousing.com/" target="_blank">chennaimetrocoophousing.com</a>
-                       </div>
-                       <div>
-                         <a href="http://vanavilestate.com/" target="_blank">vanavilestate.com</a>
-                       </div>
-                       <div>
-                         <a href="https://www.vikaahomes.com/" target="_blank">vikaahomes.com</a>
-                       </div>
-                       <div>
-                         <a href="https://dollyhomes.com/" target="_blank">dollyhomes.com</a>
-                       </div>
-                       <div>
-                         <a href="https://doodleid.com/" target="_blank">doodleid.com</a>
-                       </div>
-                       <div>
-                         <a href="http://www.inzpiredesign.com/" target="_blank">inzpiredesign.com</a>
-                       </div>  
-                       <div>
-                         <a href="http://www.folksinteriors.com/" target="_blank">folksinteriors.com</a>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-4">
-                   <div class="box-border">
-                     <div class="center-align flex mt-10">
-                       <div class="ml-20 bold text-center" style="margin-top:20px;text-transform: uppercase;">web
-                         applications</div>
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-4">
-                   <div class="box-border">
-                     <div class="center-align flex mt-10">
-                       <div class="ml-20 bold text-center" style="margin-top:20px;text-transform: uppercase;">mobile
-                         applications</div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div> -->
   <!-- Core Scripts -->
   <script src="assets/js-1\minified.js"></script>
   <!-- Additional Functionality Scripts -->
   <script src="assets/js-1\main.js"></script>
   <script src="assets/js-1\mobile-screen.js"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('Service Worker registered successfully:', registration.scope);
+          })
+          .catch((error) => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 
 </body>
 

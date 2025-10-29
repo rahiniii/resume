@@ -1,0 +1,24 @@
+{
+  "name": "Rahini Anbarasan - Portfolio",
+  "short_name": "Rahini Portfolio",
+  "description": "Portfolio website for Rahini Anbarasan - Software Developer, UI Designer, and Web Developer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#03045e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "assets/img-1/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
